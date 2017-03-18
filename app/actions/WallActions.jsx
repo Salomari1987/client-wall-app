@@ -5,7 +5,10 @@ class WallActions {
     this.generateActions(
     	'getMessagesSuccess',
     	'getMessagesFailure',
-    	'setLoggedUser'
+    	'setLoggedUser',
+    	'updateMessage',
+    	'sendMessageSuccess',
+    	'sendMessageFailure'
     );
   }
   getLoggedUser() {
@@ -24,6 +27,25 @@ class WallActions {
 	})
 	.fail((err) => {
 		this.actions.getMessagesFailure(errorMessages)
+	});
+  }
+
+  sendMessage(state) {
+    $.ajax({
+      type: 'POST',
+      url: 'http://localhost:8000/api/messages/',
+      headers: {
+      	'Authorization' : 'Token ' + state.token
+      },
+      data: {
+      	body: state.message
+      }
+    })
+	.done((data) => {
+		this.actions.sendMessageSuccess(data)
+	})
+	.fail((err) => {
+		this.actions.sendMessageFailure(err)
 	});
   }
 }

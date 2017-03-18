@@ -4,8 +4,10 @@ class MessageInput extends React.Component {
 	render() {
 		return (
 			<div>
-				<input type='text' placeholder='Message body'/>
-				<button> Enter </button>
+				<form onSubmit={this.props.sendMessage.bind(this)}>
+					<input type='text' placeholder='Message body' onChange={this.props.updateMessage}/>
+					<button type='submit'> Enter </button>
+				</form>
 			</div>
 		)
 	}

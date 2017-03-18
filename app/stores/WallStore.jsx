@@ -8,6 +8,7 @@ class WallStore {
   	this.messages = [];
     this.username = '';
     this.token = '';
+    this.message = ''
   }
 
   onSetLoggedUser(user) {
@@ -21,6 +22,18 @@ class WallStore {
 
   onGetMessagesFailure(err) {
   	console.log(err)
+  }
+
+  onSendMessageSuccess(data) {
+  	this.messages.push(data)
+  }
+
+  onSendMessageFailure(err) {
+  	console.log(err)
+  }
+
+  onUpdateMessage(event) {
+    this.message = event.target.value;
   }
 }
 

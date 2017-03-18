@@ -25,8 +25,9 @@ class Wall extends React.Component {
 		this.setState(state);
 	}
 
-	handleSubmit(event) {
+	sendMessage(event) {
 	    event.preventDefault();
+	   	WallActions.sendMessage(this.state);
 	}
 
   render() {
@@ -36,8 +37,8 @@ class Wall extends React.Component {
   		);
   	});
 
-  	var input = this.state.token ? <MessageInput /> : null;
-  	
+  	var input = this.state.token ? <MessageInput sendMessage={this.sendMessage.bind(this)} updateMessage={WallActions.updateMessage}/> : null;
+
     return (
       <div>
       	{messages}
