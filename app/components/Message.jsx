@@ -4,8 +4,8 @@ class Message extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1> Author: </h1>
-				<p> body </p>
+				<h1> Author: {this.props.author} </h1>
+				<p> body {this.props.body} </p>
 			</div>
 		)
 	}
