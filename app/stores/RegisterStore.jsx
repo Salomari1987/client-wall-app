@@ -12,13 +12,13 @@ class RegisterStore {
     this.errors = [];
   }
 
-  registerSuccess(payload) {
+  onRegisterSuccess(payload) {
     window.sessionStorage.setItem('username', payload.data.username)
     window.sessionStorage.setItem('token', payload.data.token)
-    payload.history.pushState(null, '/wall')
+    setTimeout(()=> payload.history.pushState(null, '/wall'), 0)
   }
 
-  registerFailure(errorMessages) {
+  onRegisterFailure(errorMessages) {
     this.errors = Object.keys(errorMessages).map((key, i) => {
       return key + ": " + errorMessages[key][0]
     })
