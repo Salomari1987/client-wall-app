@@ -1,0 +1,8 @@
+sudo: required
+language: node_js
+node_js:
+  - "4.4.6"
+before_script:
+  - npm install -g gulp
+  - npm install -g bower
+script: npm test
