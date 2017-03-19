@@ -23,6 +23,7 @@ class LoginActions {
 		this.actions.loginSuccess({history: history, data: data})
 	})
 	.fail((err) => {
+    console.log(err)
 		var errorMessages = JSON.parse(err.responseText)
 		this.actions.loginFailure(errorMessages)
 	});
