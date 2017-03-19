@@ -1,11 +1,11 @@
 import React from 'react';
-import Navbar from './Navbar.jsx'
+import NavbarComponent from './NavbarComponent.jsx'
 
 class App extends React.Component {
   render() {
     return (
       <div>
-      	<Navbar />
+      	<NavbarComponent history={this.props.history}/>
         {this.props.children}
       </div>
     );
