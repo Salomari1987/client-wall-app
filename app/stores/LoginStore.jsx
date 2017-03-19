@@ -7,11 +7,13 @@ class LoginStore {
     this.username = '';
     this.password = '';
     this.errors = [];
+    this.alertVisible = true;
   }
 
   onLoginSuccess(payload) {
     window.sessionStorage.setItem('username', payload.data.username)
     window.sessionStorage.setItem('token', payload.data.token)
+    this.erros = [];
     setTimeout(()=> payload.history.pushState(null, '/wall'), 0)
   }
 
