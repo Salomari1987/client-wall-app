@@ -35,14 +35,17 @@ class NavbarComponent extends React.Component {
 					<Navbar.Brand>
 						<a href='#'>Wall App </a>
 					</Navbar.Brand>
+					<Navbar.Toggle />
 				</Navbar.Header>
-				<Nav>
-					<NavItem onClick={this.goToHome}> Home </NavItem>
-					<NavItem onClick={this.goToWall}> Wall </NavItem>
-					<NavItem onClick={this.goToLogin}> Login </NavItem>
-					<NavItem onClick={this.goToRegister}> Register </NavItem>
-					<NavItem onClick={this.Logout}> Logout </NavItem>
-				</Nav>
+				<Navbar.Collapse>
+					<Nav>
+						<NavItem onClick={this.goToHome}> Home </NavItem>
+						<NavItem onClick={this.goToWall}> Wall </NavItem>
+						<NavItem onClick={this.goToLogin}> Login </NavItem>
+						<NavItem onClick={this.goToRegister}> Register </NavItem>
+						<NavItem onClick={this.Logout}> Logout </NavItem>
+					</Nav>
+				</Navbar.Collapse>
 			</Navbar>
 		)
 	}
