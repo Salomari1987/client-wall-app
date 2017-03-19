@@ -10,6 +10,7 @@ class RegisterStore {
     this.firstName = '';
     this.lastName = '';
     this.errors = [];
+    this.alertVisible = true;
   }
 
   onRegisterSuccess(payload) {
