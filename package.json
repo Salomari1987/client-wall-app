@@ -6,9 +6,10 @@
   "scripts": {
     "start": "node server.js",
     "watch": "nodemon server.js",
-    "postinstall": "bower install && gulp build",
+    "postinstall": "bower install",
     "test": "jest --coverage",
-    "test:watch": "jest --coverage --watch"
+    "test:watch": "jest --coverage --watch",
+    "build": "gulp build"
   },
   "repository": {
     "type": "git",
@@ -71,7 +72,7 @@
     "jest-cli": "^19.0.2",
     "react-addons-test-utils": "^15.4.2",
     "react-test-renderer": "^15.4.2",
-    "sinon": "^2.0.0",
+    "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
