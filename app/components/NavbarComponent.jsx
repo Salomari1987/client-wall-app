@@ -3,8 +3,8 @@ import {Link} from 'react-router';
 import { Nav, Navbar, NavItem, Header, Brand} from 'react-bootstrap';
 
 class NavbarComponent extends React.Component {
-	constructor() {
-	    super();
+	constructor(props) {
+	    super(props);
 	    this.goToWall = this.goToWall.bind(this);
 	   	this.goToHome = this.goToHome.bind(this);
 	   	this.goToLogin = this.goToLogin.bind(this);
