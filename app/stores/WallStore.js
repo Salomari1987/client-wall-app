@@ -23,6 +23,7 @@ class WallStore {
       return e;
     });
     this.messages = data;
+    socket.emit('messageSent', {})
   }
 
   onGetMessagesFailure(err) {

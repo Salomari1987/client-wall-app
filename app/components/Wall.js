@@ -16,6 +16,9 @@ class Wall extends React.Component {
     WallStore.listen(this.onChange);
     WallActions.getLoggedUser();
     WallActions.getMessages();
+    socket.on('messageFetch', (d) => {
+      WallActions.getMessages();
+    })
   }
 
   componentWillUnmount() {
