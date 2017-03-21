@@ -1,4 +1,4 @@
-import alt from '../alt.jsx';
+import alt from '../alt';
 
 class LoginActions {
   constructor() {
@@ -15,18 +15,18 @@ class LoginActions {
       type: 'POST',
       url: 'http://localhost:8000/api/login/',
       data: {
-      	username: state.username,
-      	password: state.password
+        username: state.username,
+        password: state.password
       }
     })
-	.done((data) => {
-		this.actions.loginSuccess({history: history, data: data})
-	})
-	.fail((err) => {
-    console.log(err)
-		var errorMessages = JSON.parse(err.responseText)
-		this.actions.loginFailure(errorMessages)
-	});
+    .done((data) => {
+      this.actions.loginSuccess({history: history, data: data});
+    })
+    .fail((err) => {
+      console.log(err);
+      var errorMessages = JSON.parse(err.responseText);
+      this.actions.loginFailure(errorMessages);
+    });
   }
 }
 

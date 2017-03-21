@@ -9,7 +9,7 @@ var logger = require('morgan');
 var React = require('react');
 var ReactDOM = require('react-dom/server');
 var Router = require('react-router');
-var swig  = require('swig');
+var swig = require('swig');
 var routes = require('./app/routes');
 var express = require('express');
 var app = express();
@@ -22,44 +22,45 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
 app.all('*', function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-    next();
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+  next();
 });
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res) {
   Router.match({ routes: routes.default, location: req.url }, function(err, redirectLocation, renderProps) {
     if (err) {
-      res.status(500).send(err.message)
+      res.status(500).send(err.message);
     } else if (redirectLocation) {
-      res.status(302).redirect(redirectLocation.pathname + redirectLocation.search)
+      res.status(302).redirect(redirectLocation.pathname + redirectLocation.search);
     } else if (renderProps) {
-        var html = ReactDOM.renderToString(React.createElement(Router.RoutingContext, renderProps));
-        var page = swig.renderFile('views/index.html', { html: html });
-        res.status(200).send(page);
+      var html = ReactDOM.renderToString(React.createElement(Router.RoutingContext, renderProps));
+      var page = swig.renderFile('views/index.html', { html: html });
+      res.status(200).send(page);
     } else {
-      res.status(404).send('Page Not Found')
+      res.status(404).send('Page Not Found');
     }
   });
 });
 
 // start listening to requests on port 8080
 app.listen(PORT, function () {
-	console.log("Listening on port 8080")
+  console.log('Listening on port 8080');
 });
 
 app.on ( 'uncaughtException', function () {
-	//Close connection
-	server.close();
+  //Close connection
+  server.close();
 });
 
 // On kill
 app.on('SIGTERM', function() {
-	server.close();
+  server.close();
 });
 
 //On exit
 app.on('exit', function() {
-	server.close();
+  server.close();
 });

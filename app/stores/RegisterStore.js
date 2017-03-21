@@ -1,5 +1,5 @@
-import alt from '../alt.jsx';
-import RegisterActions from '../actions/RegisterActions.jsx';
+import alt from '../alt';
+import RegisterActions from '../actions/RegisterActions';
 
 class RegisterStore {
   constructor() {
@@ -14,22 +14,22 @@ class RegisterStore {
   }
 
   onRegisterSuccess(payload) {
-    window.sessionStorage.setItem('username', payload.data.username)
-    window.sessionStorage.setItem('token', payload.data.token)
-    setTimeout(()=> payload.history.pushState(null, '/wall'), 0)
+    window.sessionStorage.setItem('username', payload.data.username);
+    window.sessionStorage.setItem('token', payload.data.token);
+    setTimeout(()=> payload.history.pushState(null, '/wall'), 0);
   }
 
   onRegisterFailure(errorMessages) {
     this.errors = Object.keys(errorMessages).map((key, i) => {
-      return key + ": " + errorMessages[key][0]
-    })
+      return key + ': ' + errorMessages[key][0];
+    });
   }
 
   isAuthenticated() {
     if (this.sessionStorage.getItem('token')) {
-      return true
+      return true;
     }
-    return false
+    return false;
   }
 
   onUpdateUsername(event) {
