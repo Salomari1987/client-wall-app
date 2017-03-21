@@ -57,15 +57,13 @@ class Login extends React.Component {
 				          <h4>Oh snap! There was an error!</h4>
 				          {errorMessages}
 				          <p>
-				            <Button bsStyle="danger">Take this action</Button>
-				            <span> or </span>
-				            <Button onClick={this.handleAlertDismiss}>Hide Alert</Button>
+				            <Button id='alert-dismiss' onClick={this.handleAlertDismiss}>Hide Alert</Button>
 				          </p>
 				        </Alert>
 					)
 				} else {
 					return (
-				      <Button onClick={this.handleAlertShow}>Show Alert</Button>
+				      <Button id='alert-show' onClick={this.handleAlertShow}>Show Alert</Button>
 				    );
 				}
 			}
@@ -77,7 +75,7 @@ class Login extends React.Component {
 				>
 					<Col sm={2} smOffset={2} componentClass={ControlLabel} >Username </Col>
 					<Col sm={6}>
-						<FormControl type='text' placeholder='username' onChange={LoginActions.updateUsername} required/>
+						<FormControl id='username' type='text' placeholder='username' onChange={LoginActions.updateUsername} required/>
 						<FormControl.Feedback />
          				<HelpBlock>Username is required</HelpBlock>
 					</Col>
@@ -87,7 +85,7 @@ class Login extends React.Component {
 					>
 					<Col sm={2} smOffset={2} componentClass={ControlLabel}> Password </Col>
 					<Col sm={6}>
-						<FormControl type='password' placeholder='password' onChange={LoginActions.updatePassword} required/>
+						<FormControl id='password' type='password' placeholder='password' onChange={LoginActions.updatePassword} required/>
 						<FormControl.Feedback />
          				<HelpBlock>Password is required</HelpBlock>
 					</Col>
