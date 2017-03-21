@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import Home from '../app/components/Home.jsx';
+import Home from '../app/components/Home';
 
 test('Home exists', () => {
 

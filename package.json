@@ -9,7 +9,8 @@
     "postinstall": "bower install",
     "test": "jest --coverage",
     "test:watch": "jest --coverage --watch",
-    "build": "gulp build"
+    "build": "gulp build",
+    "lint": "eslint ./"
   },
   "repository": {
     "type": "git",
@@ -59,6 +60,8 @@
     "browserify": "^12.0.1",
     "chai": "^3.5.0",
     "enzyme": "^2.7.1",
+    "eslint": "^3.18.0",
+    "eslint-plugin-react": "^6.10.3",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-concat": "^2.6.0",

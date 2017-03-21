@@ -1,35 +1,35 @@
-import alt from '../alt.jsx';
-import WallActions from '../actions/WallActions.jsx';
+import alt from '../alt';
+import WallActions from '../actions/WallActions';
 
 
 class WallStore {
   constructor() {
     this.bindActions(WallActions);
-  	this.messages = [];
+    this.messages = [];
     this.username = '';
     this.token = '';
-    this.message = ''
+    this.message = '';
   }
 
   onSetLoggedUser(user) {
-    this.token = user.jwt
-    this.username = user.username
+    this.token = user.jwt;
+    this.username = user.username;
   }
 
   onGetMessagesSuccess(data) {
-  	this.messages = data;
+    this.messages = data;
   }
 
   onGetMessagesFailure(err) {
-  	console.log(err)
+    console.log(err);
   }
 
   onSendMessageSuccess(data) {
-  	this.messages.push(data)
+    this.messages.push(data);
   }
 
   onSendMessageFailure(err) {
-  	console.log(err)
+    console.log(err);
   }
 
   onUpdateMessage(event) {
