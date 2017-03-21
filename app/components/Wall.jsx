@@ -32,9 +32,9 @@ class Wall extends React.Component {
 	
 	scrollToBottom () {
 	    const node = ReactDOM.findDOMNode(this.messagesEnd);
-			if (node) {
-				node.scrollIntoView({behavior: "smooth"});
-			} 
+		if (node) {
+			node.scrollIntoView({behavior: "smooth"});
+		} 
 	}
 	sendMessage(event) {
 	    event.preventDefault();
