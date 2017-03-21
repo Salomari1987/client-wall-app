@@ -8,7 +8,7 @@ class Message extends React.Component {
         <div className="chat-body clearfix">
           <div className="header">
             <strong className="primary-font">{this.props.author}</strong> <small className="pull-right text-muted">
-            <span className="glyphicon glyphicon-time"></span>12 mins ago</small>
+            <span className="glyphicon glyphicon-time"></span>{this.props.ago}</small>
           </div>
           <p>
             {this.props.body}

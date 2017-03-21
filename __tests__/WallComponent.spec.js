@@ -24,7 +24,6 @@ describe('<Wall />', () => {
   });
 
   it('does not contain a <MessageInput/> component when user is not logged in', function () {
-
     expect(wall.find(MessageInput)).to.have.length(0);
   });
 

@@ -44,7 +44,7 @@ class Wall extends React.Component {
   render() {
     var messages = this.state.messages.map((e, i) => {
       return (
-        <Message ref={(el) => { this.messagesEnd = el; }} author={e.author} body={e.body} key={i.toString()} />
+        <Message ref={(el) => { this.messagesEnd = el; }} author={e.author} body={e.body} ago={e.ago} key={i.toString()} />
       );
     });
 
