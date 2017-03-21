@@ -4,7 +4,7 @@ jest.mock('../app/stores/WallStore');
 jest.mock('../app/actions/WallActions');
 import {expect} from 'chai';
 
-import Wall from '../app/components/Wall';
+import Wall from '../app/containers/Wall';
 import Message from '../app/components/Message';
 import MessageInput from '../app/components/MessageInput';
 import WallStore from '../app/stores/WallStore';
