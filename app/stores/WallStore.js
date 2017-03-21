@@ -23,7 +23,6 @@ class WallStore {
       return e;
     });
     this.messages = data;
-    socket.emit('messageSent', {})
   }
 
   onGetMessagesFailure(err) {
@@ -33,6 +32,7 @@ class WallStore {
   onSendMessageSuccess(data) {
     data.ago = dateparser.parsedate(data.created_at);
     this.messages.push(data);
+    socket.emit('messageSent', {});
   }
 
   onSendMessageFailure(err) {
@@ -41,6 +41,13 @@ class WallStore {
 
   onUpdateMessage(event) {
     this.message = event.target.value;
+  }
+
+  onUpdateMessagesTimes(event) {
+    this.messages = this.messages.map(function (e, i) {
+      e.ago = dateparser.parsedate(e.created_at);
+      return e;
+    });
   }
 }
 

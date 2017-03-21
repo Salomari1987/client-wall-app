@@ -18,7 +18,7 @@ describe('<Wall />', () => {
       'token': '',
       'messages': [{'author': 'salomari', 'body': 'hi'}]
     });
-    wall = mount(<Wall/>);
+    wall = shallow(<Wall/>);
     Wall.prototype.scrollToBottom = jest.fn();
     spyOn(Wall.prototype, 'sendMessage');
   });
