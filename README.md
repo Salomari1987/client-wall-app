@@ -48,6 +48,15 @@ You can find server side dependancies in package.json
 * Loggin users can post messages to site wide wall
 * Messages are shown to all users in real time
 
+## Technologies:
+* React
+* react-router
+* Alt.js Flux
+* Server-side rendering
+* Express server
+* Socket.io
+* React Bootstrap (in beta)
+
 ## Known issues:
 * Current packages are a little outdated, especially react-router, which needs updating to latest version to resolve React.PropTypes warning
 * The project is not yet ready to run in production. Planning to add checks for process.env.NODE_ENV to change backend url to production.
