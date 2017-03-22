@@ -8,7 +8,8 @@ class WallActions {
       'setLoggedUser',
       'updateMessage',
       'sendMessageSuccess',
-      'sendMessageFailure'
+      'sendMessageFailure',
+      'updateMessagesTimes'
     );
   }
   getLoggedUser() {

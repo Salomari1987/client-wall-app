@@ -13,8 +13,9 @@ var swig = require('swig');
 var routes = require('./app/routes');
 var express = require('express');
 var app = express();
-
+var Server = require('http').Server;
 var PORT = process.env.PORT || 8080;
+const server = Server(app);
 
 app.use(compression());
 app.use(logger('dev'));
@@ -45,22 +46,31 @@ app.use(function(req, res) {
   });
 });
 
+var io = require('socket.io')(server);
+
+io.on('connection', function(socket) {
+  console.log('user connected');
+  socket.on('messageSent', function (d) {
+    io.emit('messageFetch', {});
+  });
+});
+
 // start listening to requests on port 8080
-app.listen(PORT, function () {
+server.listen(PORT, function () {
   console.log('Listening on port 8080');
 });
 
-app.on ( 'uncaughtException', function () {
+server.on ( 'uncaughtException', function () {
   //Close connection
   server.close();
 });
 
 // On kill
-app.on('SIGTERM', function() {
+server.on('SIGTERM', function() {
   server.close();
 });
 
 //On exit
-app.on('exit', function() {
+server.on('exit', function() {
   server.close();
 });

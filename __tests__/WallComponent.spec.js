@@ -18,13 +18,12 @@ describe('<Wall />', () => {
       'token': '',
       'messages': [{'author': 'salomari', 'body': 'hi'}]
     });
-    wall = mount(<Wall/>);
+    wall = shallow(<Wall/>);
     Wall.prototype.scrollToBottom = jest.fn();
     spyOn(Wall.prototype, 'sendMessage');
   });
 
   it('does not contain a <MessageInput/> component when user is not logged in', function () {
-
     expect(wall.find(MessageInput)).to.have.length(0);
   });
 

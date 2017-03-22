@@ -10,14 +10,24 @@ class Wall extends React.Component {
     super(props);
     this.state = WallStore.getState();
     this.onChange = this.onChange.bind(this);
+    this._fetchMessages = this._fetchMessages.bind(this);
   }
 
   componentDidMount() {
     WallStore.listen(this.onChange);
     WallActions.getLoggedUser();
     WallActions.getMessages();
+
+    this._fetchMessages();
+
+    setInterval(() => WallActions.updateMessagesTimes(), 300000);
   }
 
+  _fetchMessages () {
+    socket.on('messageFetch', (d) => {
+      WallActions.getMessages();
+    });
+  }
   componentWillUnmount() {
     WallStore.unlisten(this.onChange);
   }
@@ -44,7 +54,7 @@ class Wall extends React.Component {
   render() {
     var messages = this.state.messages.map((e, i) => {
       return (
-        <Message ref={(el) => { this.messagesEnd = el; }} author={e.author} body={e.body} key={i.toString()} />
+        <Message ref={(el) => { this.messagesEnd = el; }} author={e.author} body={e.body} ago={e.ago} key={i.toString()} />
       );
     });
 

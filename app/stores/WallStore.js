@@ -1,5 +1,6 @@
 import alt from '../alt';
 import WallActions from '../actions/WallActions';
+import dateparser from '../services/dateparser.js';
 
 
 class WallStore {
@@ -17,6 +18,10 @@ class WallStore {
   }
 
   onGetMessagesSuccess(data) {
+    data = data.map(function (e, i) {
+      e.ago = dateparser.parsedate(e.created_at);
+      return e;
+    });
     this.messages = data;
   }
 
@@ -25,7 +30,9 @@ class WallStore {
   }
 
   onSendMessageSuccess(data) {
+    data.ago = dateparser.parsedate(data.created_at);
     this.messages.push(data);
+    socket.emit('messageSent', {});
   }
 
   onSendMessageFailure(err) {
@@ -34,6 +41,13 @@ class WallStore {
 
   onUpdateMessage(event) {
     this.message = event.target.value;
+  }
+
+  onUpdateMessagesTimes(event) {
+    this.messages = this.messages.map(function (e, i) {
+      e.ago = dateparser.parsedate(e.created_at);
+      return e;
+    });
   }
 }
 
