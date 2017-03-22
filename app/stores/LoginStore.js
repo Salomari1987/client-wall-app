@@ -8,6 +8,8 @@ class LoginStore {
     this.password = '';
     this.errors = [];
     this.alertVisible = true;
+    this.size = 6;
+    this.offset = 1;
   }
 
   onLoginSuccess(payload) {

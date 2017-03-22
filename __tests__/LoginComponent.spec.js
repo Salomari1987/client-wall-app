@@ -4,7 +4,7 @@ import chai from 'chai';
 import {expect} from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-import Login from '../app/components/Login';
+import Login from '../app/containers/Login';
 import LoginStore from '../app/stores/LoginStore';
 import LoginActions from '../app/actions/LoginActions';
 import { Alert, Col, Form, Button, FormGroup, FormControl, HelpBlock, ControlLabel } from 'react-bootstrap';

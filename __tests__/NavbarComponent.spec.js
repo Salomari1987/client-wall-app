@@ -5,7 +5,7 @@ import chai from 'chai';
 import {expect} from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
-import NavbarComponent from '../app/components/NavbarComponent';
+import NavbarComponent from '../app/containers/NavbarContainer';
 
 import { Nav, Navbar, NavItem, Header, Brand} from 'react-bootstrap';
 

@@ -11,6 +11,8 @@ class RegisterStore {
     this.lastName = '';
     this.errors = [];
     this.alertVisible = true;
+    this.size = 6;
+    this.offset = 1;
   }
 
   onRegisterSuccess(payload) {

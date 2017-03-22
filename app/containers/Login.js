@@ -2,7 +2,9 @@ import React from 'react';
 import {Link} from 'react-router';
 import LoginStore from '../stores/LoginStore';
 import LoginActions from '../actions/LoginActions';
-import { Alert, Col, Form, Button, FormGroup, FormControl, HelpBlock, ControlLabel } from 'react-bootstrap';
+import FieldGroup from '../components/FieldGroup';
+import { Alert, Col, Form, Button, FormGroup } from 'react-bootstrap';
+import AlertComponent from '../components/AlertComponent';
 
 class Login extends React.Component {
   constructor(props) {
@@ -55,46 +57,46 @@ class Login extends React.Component {
     
     var alert = (function () {
       if (errorMessages.length > 0) {
-        if (this.state.alertVisible) {
-          return (
-            <Alert bsStyle="danger" onDismiss={this.handleAlertDismiss}>
-              <h4>Oh snap! There was an error!</h4>
-              {errorMessages}
-              <p>
-                <Button id='alert-dismiss' onClick={this.handleAlertDismiss}>Hide Alert</Button>
-              </p>
-            </Alert>
-          );
-        } else {
-          return (
-            <Button id='alert-show' onClick={this.handleAlertShow}>Show Alert</Button>
-          );
-        }
+        return (
+          <AlertComponent 
+          handleAlertDismiss={this.handleAlertDismiss.bind(this)}
+          errorMessages={errorMessages}
+          handleAlertShow={this.handleAlertShow.bind(this)}
+          alertVisible={this.state.alertVisible} />
+        );
       }
     }).call(this);
 
     return (
       <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
-        <FormGroup
-        validationState={this.getValidationState(this.state.username)}
-        >
-          <Col sm={2} smOffset={2} componentClass={ControlLabel} >Username </Col>
-          <Col sm={6}>
-            <FormControl id='username' type='text' placeholder='username' onChange={LoginActions.updateUsername} required/>
-            <FormControl.Feedback />
-            <HelpBlock>Username is required</HelpBlock>
-          </Col>
-        </FormGroup>
-        <FormGroup
-        validationState={this.getValidationState(this.state.password)}
-        >
-          <Col sm={2} smOffset={2} componentClass={ControlLabel}> Password </Col>
-          <Col sm={6}>
-            <FormControl id='password' type='password' placeholder='password' onChange={LoginActions.updatePassword} required/>
-            <FormControl.Feedback />
-            <HelpBlock>Password is required</HelpBlock>
-          </Col>
-        </FormGroup>
+        <FieldGroup 
+          validationState={this.getValidationState(this.state.username)}
+          fieldID='username'
+          fieldLabel='Username'
+          onChange={LoginActions.updateUsername}
+          helpBlock='Username is required'
+          isLabel={true}
+          size={this.state.size}
+          offset={this.state.offset} 
+          type='text'
+          isHelpBlock={true}
+          placeholder='username'
+          isRequired={true}
+        />
+        <FieldGroup 
+          validationState={this.getValidationState(this.state.password)}
+          fieldID='password'
+          fieldLabel='Password'
+          onChange={LoginActions.updatePassword}
+          helpBlock='Password is required'
+          isLabel={true}
+          size={this.state.size}
+          offset={this.state.offset} 
+          type='password'
+          isHelpBlock={true}
+          placeholder='password'
+          isRequired={true}
+        />
         <FormGroup>
           <Col smOffset={4} sm={8}>
             <Button type="submit">

@@ -1,7 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 
-import Home from '../app/components/Home';
+import Home from '../app/containers/Home';
 
 test('Home exists', () => {
 
@@ -9,6 +9,6 @@ test('Home exists', () => {
     <Home />
   );
 
-  expect(home.text()).toEqual('Hello from Home Components');
+  expect(home.find('h1').text()).toEqual('Welcome to the Ultimate Wall App');
 });
 

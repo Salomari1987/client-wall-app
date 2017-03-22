@@ -17,3 +17,22 @@
     overflow-y: scroll;
     height: 80vh;
 }
+
+#panel-body-home {
+	overflow-y: scroll;
+    height: 30vh;
+}
+
+.btn-home {
+	min-width: 200px;
+	padding: 20px;
+	font-size: 200%;
+}
+
+.home-component {
+	margin: 100px;
+}
+
+.home-wall {
+	margin-top:200px;
+}
