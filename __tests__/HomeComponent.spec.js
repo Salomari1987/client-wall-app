@@ -9,6 +9,6 @@ test('Home exists', () => {
     <Home />
   );
 
-  expect(home.text()).toEqual('Hello from Home Components');
+  expect(home.find('h1').text()).toEqual('Welcome to the Ultimate Wall App');
 });
 

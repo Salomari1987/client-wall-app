@@ -61,16 +61,16 @@ class Wall extends React.Component {
     var input = this.state.token ? <MessageInput sendMessage={this.sendMessage.bind(this)} updateMessage={WallActions.updateMessage}/> : null;
 
     return (
-      <div className="container">
+      <div className={'container' + this.props.wallContainer}>
         <div className="row">
           <div className="col-md-12">
             <div className="panel panel-default">
-              <div className="panel-body">
+              <div className='panel-body' id={this.props.chatHeight}>
                 <ul className="chat">
                   {messages}
                 </ul>
               </div>
-              {input}
+              {!this.props.input && input}
             </div>
           </div>
         </div>
